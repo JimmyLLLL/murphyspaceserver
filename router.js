@@ -1,0 +1,18 @@
+const Router = require('koa-router')
+const router = new Router()
+const user = require('./controller/user')
+
+router.post('/personalAPI/blog/register', user.register)
+router.post('/personalAPI/blog/login', user.login)
+router.post('/personalAPI/blog/sendEdit',user.sendEdit)
+router.post('/personalAPI/blog/getBlog',user.getBlog)
+router.post('/personalAPI/blog/enterBlog',user.enterBlog)
+router.post('/personalAPI/blog/PersonalInfoChange',user.PersonalInfoChange)
+router.post('/personalAPI/blog/memoryLogin',user.memoryLogin)
+router.post('/personalAPI/blog/uploadAvator',user.uploadAvator)
+router.post('/personalAPI/blog/uploadAvatorValid',user.uploadAvatorValid)
+router.post('/personalAPI/blog/getNewAvator',user.getNewAvator)
+router.post('/personalAPI/blog/checkExistAccount',user.checkExistAccount)
+router.post('/personalAPI/blog/sendComment',user.sendComment)
+router.post('/personalAPI/blog/getComment',user.getComment)
+module.exports = router
