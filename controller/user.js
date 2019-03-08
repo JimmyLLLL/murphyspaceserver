@@ -6,6 +6,97 @@ const path = require('path')
 
 
 module.exports = {
+    async handleBlogDelete(ctx){
+        const id = ctx.request.body.id
+        const token = ctx.request.headers.authorization;
+        const secret = 'JimmyLam';
+        try{
+            const payload = jwt.verify(token,secret);
+            const account = payload.account;
+            const post = await mysql.findDataById(id);
+            console.log(post[0])
+            if(post[0].uid===account){
+                try{
+                    await mysql.deletePost(id)
+                    ctx.body = {
+                        code:1
+                    }
+                }catch(e){
+                    console.log(e)
+                    ctx.body = {
+                        code:-1
+                    }
+                }
+            }else{
+                ctx.body = {
+                    code:-2
+                }
+            }
+        }catch(e){
+            console.log(e)
+            ctx.body = {
+                code:0
+            }
+        }
+    },
+    async findDataByName(ctx){
+        const name = ctx.request.body.name
+        try{
+            const data = await mysql.findDataByName(name)
+            ctx.body = {
+                code:1,
+                data
+            }
+        }catch(e){
+            console.log(e)
+            ctx.body = {
+                code:0
+            }
+        } 
+    },
+    async personalGetBlog(ctx){
+        const page = ctx.request.body.page
+        const name = ctx.request.body.account
+        try{
+            const data = await mysql.findPostByUserPage(name,page)
+            ctx.body = {
+                code:1,
+                data
+            }
+        }catch(e){
+            console.log(e)
+            ctx.body = {
+                code:0
+            }
+        }
+    },
+    async deleteComment(ctx){
+        const id = ctx.request.body.id
+        const postid = ctx.request.body.postid
+        const token = ctx.request.headers.authorization;
+        const secret = 'JimmyLam';
+        try{
+            const payload = jwt.verify(token,secret);
+            try{
+                await mysql.deleteComment(id)
+                const returnInfo = await mysql.getAllComment(postid)
+                ctx.body = {
+                    code:1,
+                    returnInfo
+                }                
+            }catch(e){
+                ctx.body = {
+                    code:0
+                }
+            }
+            
+        }catch{
+            ctx.body = {
+                code:-1
+            }
+        }
+        
+    },
     async getComment(ctx){
         const index = ctx.request.body.id
         const returnInfo = await mysql.getAllComment(index)

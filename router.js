@@ -15,4 +15,8 @@ router.post('/personalAPI/blog/getNewAvator',user.getNewAvator)
 router.post('/personalAPI/blog/checkExistAccount',user.checkExistAccount)
 router.post('/personalAPI/blog/sendComment',user.sendComment)
 router.post('/personalAPI/blog/getComment',user.getComment)
+router.post('/personalAPI/blog/deleteComment',user.deleteComment)
+router.post('/personalAPI/blog/personalGetBlog',user.personalGetBlog)
+router.post('/personalAPI/blog/findDataByName',user.findDataByName)
+router.post('/personalAPI/blog/handleBlogDelete',user.handleBlogDelete)
 module.exports = router
