@@ -362,7 +362,7 @@ module.exports = {
             const password = payload.password;
             const content = {account,password};
             const newToken = jwt.sign(content, secret, {
-                expiresIn: 3600  // 1小时过期
+                expiresIn: 10800  // 3小时过期
             });
             try{
                 const returnInfo = await mysql.loginFunction([account,password]);
@@ -399,7 +399,7 @@ module.exports = {
                 const content = {account,password};
                 const secretOrPrivateKey="JimmyLam";
                 const token = jwt.sign(content, secretOrPrivateKey, {
-                    expiresIn: 3600  // 1小时过期
+                    expiresIn: 10800  // 1小时过期
                 });
                 const nickname = returnInfo[0].nickname;
                 const word = returnInfo[0].word;
