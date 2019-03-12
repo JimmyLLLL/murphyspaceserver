@@ -34,13 +34,13 @@ let query = function( sql, values ) {
 let users =
     `create table if not exists users(
      name VARCHAR(100) NOT NULL,
-     nickname VARCHAR(100) DEFAULT 'JimmyLam的家人',
+     nickname VARCHAR(100),
      word TEXT(0),
      pass VARCHAR(100) NOT NULL,
-     avator VARCHAR(100),
+     avator VARCHAR(100) DEFAULT 'default.jpeg',
      moment VARCHAR(100) NOT NULL,
      PRIMARY KEY ( name )
-    );`
+    )character set = utf8;`
 
 let posts =
     `create table if not exists posts(
@@ -54,7 +54,7 @@ let posts =
      pv VARCHAR(40) NOT NULL DEFAULT '0',
      avator VARCHAR(100),
      PRIMARY KEY ( id )
-    );`
+    )character set = utf8;`
 
 let comment =
     `create table if not exists comment(
@@ -66,7 +66,7 @@ let comment =
      postid VARCHAR(40) NOT NULL,
      avator VARCHAR(100) NOT NULL,
      PRIMARY KEY ( id )
-    );`
+    )character set = utf8;`
 
 
 
