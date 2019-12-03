@@ -6,7 +6,7 @@ const config = {
   database: {
     DATABASE: "personal",
     USERNAME: "root",
-    PASSWORD: "Jmspeed13.",
+    PASSWORD: "123qwe",
     PORT: "3306",
     HOST: "localhost"
   }
