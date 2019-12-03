@@ -10,8 +10,8 @@ module.exports = {
       "no-useless-constructor": "off", 
       camelcase: "off",
       "no-throw-literal": "off",
-      "prettier/prettier": "error"
+      "prettier/prettier": "off",
+      "no-undef":"error"
     },
     "plugins": ["prettier"]
   };
-  

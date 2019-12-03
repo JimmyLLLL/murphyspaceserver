@@ -245,7 +245,7 @@ module.exports = {
           throw Error(error);
         }
       });
-    } catch (e) {
+    } catch (error) {
       ctx.body = {
         status: 500,
         error_msg: ERROR_500
@@ -259,7 +259,7 @@ module.exports = {
       // 创建可读流
       const reader = fs.createReadStream(file.path);
       //构建文件名
-      const filePath = createAssetName(file.name, account);
+      const { filePath, name } = createAssetName(file.name, account);
 
       // 创建可写流
       const upStream = fs.createWriteStream(filePath);
